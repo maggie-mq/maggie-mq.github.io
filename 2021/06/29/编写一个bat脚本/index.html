@@ -20,23 +20,38 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.5.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+<meta name="description" content="编写一个bat脚本入门 有没有跟我一样一脸懵的同志，bat脚本是什么？？？ 标准答案：上百度——批处理 ​    bat脚本就是DOS批处理脚本，就是将一些DOS命令按照一定顺序排列而形成的集合，运行在Windows命令行环境上。 我的理解（略狭隘）：就像python编译器执行python（.py）脚本一样，windows系统的命令提示符不就是执行DOS命令的吗，DOS命令写在一个脚本里面不就是.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编写一个bat脚本">
+<meta property="og:url" content="http://example.com/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="编写一个bat脚本入门 有没有跟我一样一脸懵的同志，bat脚本是什么？？？ 标准答案：上百度——批处理 ​    bat脚本就是DOS批处理脚本，就是将一些DOS命令按照一定顺序排列而形成的集合，运行在Windows命令行环境上。 我的理解（略狭隘）：就像python编译器执行python（.py）脚本一样，windows系统的命令提示符不就是执行DOS命令的吗，DOS命令写在一个脚本里面不就是.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/image-20210629140916341.png">
+<meta property="og:image" content="http://example.com/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/image-20210629141043416.png">
+<meta property="og:image" content="http://example.com/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/image-20210629141312097.png">
+<meta property="og:image" content="http://example.com/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/image-20210629141407813.png">
+<meta property="og:image" content="http://example.com/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/image-20210629143617103.png">
+<meta property="og:image" content="http://example.com/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/image-20210629142438754.png">
+<meta property="og:image" content="http://example.com/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/image-20210629145221651.png">
+<meta property="og:image" content="http://example.com/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/image-20210629150400454.png">
+<meta property="og:image" content="http://example.com/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/image-20210629151905195.png">
+<meta property="og:image" content="http://example.com/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/image-20210629152028061.png">
+<meta property="article:published_time" content="2021-06-29T05:15:07.000Z">
+<meta property="article:modified_time" content="2021-06-29T08:46:02.200Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/image-20210629140916341.png">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/","path":"2021/06/29/编写一个bat脚本/","title":"编写一个bat脚本"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Hexo</title>
+<title>编写一个bat脚本 | Hexo</title>
   
 
 
@@ -90,7 +105,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -103,6 +118,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">编写一个bat脚本入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%89%B9%E5%A4%84%E7%90%86%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、批处理常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%B8%B8%E9%87%8F"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">1. 常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-echo"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">2.echo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-echo-off-on"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">3.echo off&#x2F;on</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">4. @</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-call"><span class="nav-number">1.0.1.5.</span> <span class="nav-text">5. call</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-pause"><span class="nav-number">1.0.1.6.</span> <span class="nav-text">6. pause</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-rem%EF%BC%88%E5%8F%AF%E4%BB%A5%E7%94%A8-%E4%BB%A3%E6%9B%BF%EF%BC%89"><span class="nav-number">1.0.1.7.</span> <span class="nav-text">7. rem（可以用::代替）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E5%8F%98%E9%87%8F"><span class="nav-number">1.0.1.8.</span> <span class="nav-text">8. 变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">1.0.1.9.</span> <span class="nav-text">9. 字符串基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-%E5%8F%82%E6%95%B0"><span class="nav-number">1.0.1.10.</span> <span class="nav-text">10. 参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-start%EF%BC%9A%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E5%8D%95%E7%8B%AC%E7%9A%84%E7%AA%97%E5%8F%A3%E4%BB%A5%E8%BF%90%E8%A1%8C%E6%8C%87%E5%AE%9A%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%88%96%E5%91%BD%E4%BB%A4"><span class="nav-number">1.0.1.11.</span> <span class="nav-text">11. start：启动一个单独的窗口以运行指定的程序或命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-exit%EF%BC%9A%E9%80%80%E5%87%BAcmd-exe%E7%A8%8B%E5%BA%8F%E6%88%96%E5%BD%93%E5%89%8D%E6%89%B9%E5%A4%84%E7%90%86%E8%84%9A%E6%9C%AC"><span class="nav-number">1.0.1.12.</span> <span class="nav-text">12. exit：退出cmd.exe程序或当前批处理脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-cls%EF%BC%9A%E6%B8%85%E9%99%A4%E5%B1%8F%E5%B9%95%E5%86%85%E5%AE%B9"><span class="nav-number">1.0.1.13.</span> <span class="nav-text">13.cls：清除屏幕内容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%95%A5%E9%AB%98%E7%BA%A7%E7%9A%84%E5%91%BD%E4%BB%A4if-goto-choice-for"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、略高级的命令if,goto,choice,for</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-if"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">1. if</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-goto"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">2. goto</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-choice"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">3. choice</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-for"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">4. for</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%B3%A8%E6%84%8F%E6%9C%89%E5%9D%91"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、注意有坑</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -145,79 +161,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/29/DOS%E5%91%BD%E4%BB%A4%E7%A7%AF%E7%B4%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/29/DOS%E5%91%BD%E4%BB%A4%E7%A7%AF%E7%B4%AF/" class="post-title-link" itemprop="url">DOS命令积累</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-06-29 19:54:41" itemprop="dateCreated datePublished" datetime="2021-06-29T19:54:41+08:00">2021-06-29</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -230,9 +184,9 @@
       <meta itemprop="name" content="Hexo">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/29/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAbat%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">编写一个bat脚本</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          编写一个bat脚本
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -256,7 +210,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="编写一个bat脚本入门"><a href="#编写一个bat脚本入门" class="headerlink" title="编写一个bat脚本入门"></a>编写一个bat脚本入门</h1><blockquote>
+        <h1 id="编写一个bat脚本入门"><a href="#编写一个bat脚本入门" class="headerlink" title="编写一个bat脚本入门"></a>编写一个bat脚本入门</h1><blockquote>
 <p>有没有跟我一样一脸懵的同志，bat脚本是什么？？？</p>
 <p>标准答案：上百度——<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%89%B9%E5%A4%84%E7%90%86/1448600?fromtitle=.bat&fromid=6476412">批处理</a></p>
 <p>​    bat脚本就是DOS批处理脚本，就是将一些DOS命令按照一定顺序排列而形成的集合，运行在Windows命令行环境上。</p>
@@ -409,7 +363,6 @@
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013517637/article/details/70598019">https://blog.csdn.net/u013517637/article/details/70598019</a></li>
 </ul>
 
-      
     </div>
 
     
@@ -417,125 +370,25 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/24/self-introduction/" rel="prev" title="self-introduction">
+                  <i class="fa fa-chevron-left"></i> self-introduction
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/06/29/DOS%E5%91%BD%E4%BB%A4%E7%A7%AF%E7%B4%AF/" rel="next" title="DOS命令积累">
+                  DOS命令积累 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/24/self-introduction/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/24/self-introduction/" class="post-title-link" itemprop="url">self-introduction</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-06-24 16:58:32" itemprop="dateCreated datePublished" datetime="2021-06-24T16:58:32+08:00">2021-06-24</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-25 14:36:36" itemprop="dateModified" datetime="2021-06-25T14:36:36+08:00">2021-06-25</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="欢迎来到MengQi的世界"><a href="#欢迎来到MengQi的世界" class="headerlink" title="欢迎来到MengQi的世界"></a>欢迎来到MengQi的世界</h2><p>大家好，这是我的第一篇博客。<font color="blue"><b>终于，我也是有博客的人了</b></font></p>
-<ol>
-<li><p>为什么想搭博客</p>
-<p>作为一名优（拖）秀（延）的程序猿，我一直想有一个博客。总觉得搭个人博客是一个很牛掰的事情，这么牛掰的事情做起来一定很难。但是今天真正做起来感觉还可以。果然是万事开头难吧。从今天开始，我也有了自己的博客。开心ing。</p>
-</li>
-<li><p>搭博客遇到的问题记录</p>
-<p>首先要感谢记录这几篇文章博主，跟着做就好了</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://godweiyang.com/2018/04/13/hexo-blog/">韦阳的博客</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903937791770637">https://juejin.cn/post/6844903937791770637</a></li>
-<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000017986794">https://segmentfault.com/a/1190000017986794</a></li>
-</ul>
-<p>（1）仓库名字</p>
-<p>因为github是我之前就创建的账号，搭博客创建仓库的时候，我很蒙，仓库名字一定要用自己的名字是什么，然后我先创建了一个以我姓名拼音的仓库，一直感觉怪怪的。后面看了别文章才知道仓库名字是用户名，就是创建github账号的用户名。避坑~</p>
-<p>（2）hexo 部署提示deploy done:git成功，但是服务端没有产生文件</p>
-<p>这个问题真的绝绝子，困扰了我好久，俩小时吧。我觉得一切都很正常，跟着大神的步骤做的。结果一直推不上去。然后我又看了好几眼github，终于发现我有俩分支，我一直推在master分支，但是界面展示一直是main分支。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img image.jpg This is an image %&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/06/24/self-introduction/image-20210625114530817.png" alt="image-20210625114530817"></p>
-<p><img src="/2021/06/24/self-introduction/image-20210625114447497.png" alt="image-20210625114447497"></p>
-<p>纳了闷了，我什么时候做了这个main分支（我不是很会操作git，一知半解的）。我就想到了操作步骤有一个我当时没做，当时为啥没做，忘了。我回去在【Settings】【Pages】【Source】将分支改正master，输博客网址页面也显示了。搜索后知道<b>page仓库的master分支用来存放网站文件的，这是GitHub Page的要求。</b></p>
-<p><img src="/2021/06/24/self-introduction/image-20210625114824656.png" alt="image-20210625114824656"></p>
-<p>（3）图片加载不出来</p>
-<p>我在本地用Typora软件写的md文件，他会自动新建一个和md文件同名的.assets目录。但是hexo生成的是一个同名的目录</p>
-<ul>
-<li><p>hexo生成的目录【这是正确的，路径千万不要错，不然图片打死也出不来】</p>
-<p><img src="/2021/06/24/self-introduction/hexo%E5%9B%BE%E7%89%87%E5%AD%98%E6%94%BE.png" alt="hexo图片存放"></p>
-</li>
-<li><p>md文件图片保存的目录</p>
-<p><img src="/2021/06/24/self-introduction/%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84.png"></p>
-</li>
-</ul>
-<p>上面只记录了报错的，加载图片的过程如下。</p>
-<ul>
-<li>下载插件：<code>npm install hexo-asset-image --save </code></li>
-<li>修改全局文件：在根目录文件【_config.yaml】找到【post_asset_folder】，将值改为【true】</li>
-<li>之前新建的文章自己建一个同名的目录，随后新建的文章自己会自动新建一个同名的目录</li>
-</ul>
-</li>
-<li><p>博客想记录什么</p>
-<p>我的废话发在别的地方了。博客我想记录知识点类的，有助于工作技能提升，兴趣爱好之类的。也是学习的一个过程吧。</p>
-<p><b><font size="5pm">不忘初心，方得始终。</font></b></p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
