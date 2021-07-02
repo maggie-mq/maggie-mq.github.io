@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.5.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="记录一次：搭建一台wsus服务器1.WSUSWindows服务器更新服务wsus（Windows Server Update Service） 2. 部署WSUS服务2.1. 新建一台虚拟机虚拟环境：hyper-V Windows 版本：Windows server 2016 standard 过程：省略 2.2. 安装wsus服务器角色          【存储路径：虚拟机只分配了一个C盘，正常">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建一台wsus服务器">
+<meta property="og:url" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="记录一次：搭建一台wsus服务器1.WSUSWindows服务器更新服务wsus（Windows Server Update Service） 2. 部署WSUS服务2.1. 新建一台虚拟机虚拟环境：hyper-V Windows 版本：Windows server 2016 standard 过程：省略 2.2. 安装wsus服务器角色          【存储路径：虚拟机只分配了一个C盘，正常">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630175848062.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630175934209.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630175957819.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180029678.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180142489.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180210717.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180243362.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180318795.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180355898.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180612583.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180742991.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180814851.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180844461.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630181713862.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630182205616.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210701170743033.png">
+<meta property="og:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210702112757434.png">
+<meta property="article:published_time" content="2021-06-30T07:19:20.000Z">
+<meta property="article:modified_time" content="2021-07-02T05:08:47.017Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630175848062.png">
+
+
+<link rel="canonical" href="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/","path":"2021/06/30/搭建一台wsus服务器/","title":"搭建一台wsus服务器"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>搭建一台wsus服务器 | Hexo</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Hexo</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%EF%BC%9A%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">记录一次：搭建一台wsus服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-WSUS"><span class="nav-number">1.1.</span> <span class="nav-text">1.WSUS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%83%A8%E7%BD%B2WSUS%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.2.</span> <span class="nav-text">2. 部署WSUS服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E6%96%B0%E5%BB%BA%E4%B8%80%E5%8F%B0%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1. 新建一台虚拟机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%AE%89%E8%A3%85wsus%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A7%92%E8%89%B2"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2. 安装wsus服务器角色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E4%BD%BF%E7%94%A8WSUS%E9%85%8D%E7%BD%AE%E5%90%91%E5%AF%BC%E9%85%8D%E7%BD%AEWSUS%E9%85%8D%E7%BD%AEWSUS"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3.使用WSUS配置向导配置WSUS配置WSUS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-1-%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">2.3.1. 配置网络连接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-3-%E9%85%8D%E7%BD%AEWSUS%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">2.3.3. 配置WSUS计算机组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-4-%E9%85%8D%E7%BD%AE%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9B%B4%E6%96%B0"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">2.3.4. 配置客户端更新</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-5-%E4%BD%BF%E7%94%A8%E5%AE%89%E5%85%A8%E5%A5%97%E6%8E%A5%E5%AD%97%E5%B1%82%E5%8D%8F%E8%AE%AE%E4%BF%9D%E6%8A%A4WSUS"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">2.3.5. 使用安全套接字层协议保护WSUS</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          搭建一台wsus服务器
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-06-30 15:19:20" itemprop="dateCreated datePublished" datetime="2021-06-30T15:19:20+08:00">2021-06-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-07-02 13:08:47" itemprop="dateModified" datetime="2021-07-02T13:08:47+08:00">2021-07-02</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="记录一次：搭建一台wsus服务器"><a href="#记录一次：搭建一台wsus服务器" class="headerlink" title="记录一次：搭建一台wsus服务器"></a>记录一次：搭建一台wsus服务器</h2><h3 id="1-WSUS"><a href="#1-WSUS" class="headerlink" title="1.WSUS"></a>1.WSUS</h3><p><strong>Windows服务器更新服务wsus（Windows Server Update Service）</strong></p>
+<h3 id="2-部署WSUS服务"><a href="#2-部署WSUS服务" class="headerlink" title="2. 部署WSUS服务"></a>2. 部署WSUS服务</h3><h4 id="2-1-新建一台虚拟机"><a href="#2-1-新建一台虚拟机" class="headerlink" title="2.1. 新建一台虚拟机"></a>2.1. 新建一台虚拟机</h4><p>虚拟环境：hyper-V</p>
+<p>Windows 版本：Windows server 2016 standard</p>
+<p>过程：省略</p>
+<h4 id="2-2-安装wsus服务器角色"><a href="#2-2-安装wsus服务器角色" class="headerlink" title="2.2. 安装wsus服务器角色"></a>2.2. 安装wsus服务器角色</h4><p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630175848062.png" alt="image-20210630175848062"></p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630175934209.png" alt="image-20210630175934209"></p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630175957819.png" alt="image-20210630175957819"></p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180029678.png" alt="image-20210630180029678"></p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180142489.png" alt="image-20210630180142489"></p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180210717.png" alt="image-20210630180210717"></p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180243362.png" alt="image-20210630180243362"></p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180318795.png" alt="image-20210630180318795"></p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180355898.png" alt="image-20210630180355898"></p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180612583.png" alt="image-20210630180612583"></p>
+<p>【存储路径：虚拟机只分配了一个C盘，正常情况下文件不会放在C盘】</p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180742991.png" alt="image-20210630180742991"></p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180814851.png" alt="image-20210630180814851"></p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630180844461.png" alt="image-20210630180844461"></p>
+<p>点击【启动安装后任务】，显示【已成功完成配置】，点击【关闭】</p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630181713862.png" alt="image-20210630181713862"></p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210630182205616.png" alt="image-20210630182205616"></p>
+<h4 id="2-3-使用WSUS配置向导配置WSUS配置WSUS"><a href="#2-3-使用WSUS配置向导配置WSUS配置WSUS" class="headerlink" title="2.3.使用WSUS配置向导配置WSUS配置WSUS"></a>2.3.使用WSUS配置向导配置WSUS配置WSUS</h4><p>打开【服务器管理器】-【工具】-【Windows Server 更新服务】，一直点击【下一步】进行配置，直到【完成】</p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210701170743033.png" alt="image-20210701170743033"></p>
+<p>打开【服务器管理器】-【工具】-【Windows Server 更新服务】</p>
+<p>【选项】</p>
+<p><img src="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/image-20210702112757434.png" alt="image-20210702112757434"></p>
+<ul>
+<li><p>产品和分类：可以选择要同步哪个Windows系统的补丁，哪个软件的补丁等</p>
+</li>
+<li><p>同步计划：可以选择手动同步还是自动同步</p>
+</li>
+<li><p>自动审批：可以选择是否自动审批</p>
+</li>
+</ul>
+<p>【同步】：查看同步是否成功</p>
+<p>【更新】：查看所有同步过来的补丁</p>
+<p>【审批】更新补丁</p>
+<p>客户端检查更新，安装补丁</p>
+<h5 id="2-3-1-配置网络连接"><a href="#2-3-1-配置网络连接" class="headerlink" title="2.3.1. 配置网络连接"></a>2.3.1. 配置网络连接</h5><h5 id="2-3-3-配置WSUS计算机组"><a href="#2-3-3-配置WSUS计算机组" class="headerlink" title="2.3.3. 配置WSUS计算机组"></a>2.3.3. 配置WSUS计算机组</h5><h5 id="2-3-4-配置客户端更新"><a href="#2-3-4-配置客户端更新" class="headerlink" title="2.3.4. 配置客户端更新"></a>2.3.4. 配置客户端更新</h5><ul>
+<li><p>加域计算机</p>
+<p>通过组策略进行设置</p>
+</li>
+<li><p>未加域计算机</p>
+<p>修改注册表，新建一个记事本文件、命令【（参考）wsus.reg】</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]   </span><br><span class="line"># Windows Update注册表项</span><br><span class="line">AcceptTrustedPublisherCerts=dword:00000001    </span><br><span class="line"># 接受受信任的发布者证书 1：启用（WSUS服务器将分发已签名的第三方更新（如果有））；0：禁用（不分发第三方更新）</span><br><span class="line">ElevateNonAdmins=dword:00000001   </span><br><span class="line"># 设置为1：非管理员组成员也可以为计算机打补丁 </span><br><span class="line"># 1：允许允许“用户”安全组中的用户批准或不批准更新； 0：只有管理员用户组中的用户才能批准或不批准更新。</span><br><span class="line">TargetGroup=&quot;Workstations&quot;   </span><br><span class="line"># 目标组：指客户端自动注册到WSUS服务器的哪个计算机组，可以为空。</span><br><span class="line">TargetGroupEnabled=dword:00000000  </span><br><span class="line"># 设置了这个，客户端的计算机才能被wsus服务器检测 1:使用客户端定位；0：不使用客户端定位</span><br><span class="line">WUServer=http://your-WSUS-server:port     # wsus服务器</span><br><span class="line">WUStatusServer=http://your-WSUS-server:port     # 状态统计服务器</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]    </span><br><span class="line"># 自动更新配置注册表项</span><br><span class="line">AUOptions=dword:00000003     </span><br><span class="line"># 4：自动下载后自动安装  3：自动下载并提醒安装  2：下载前通知  5：自动更新，但最终用户可以对其进行配置</span><br><span class="line">AUPowerManagement=dword:00000001 </span><br><span class="line">AutoInstallMinorUpdates=dword:00000001    </span><br><span class="line"># 1：后台安装  0：该更新和其他更新一样</span><br><span class="line">DetectionFrequency=dword:0000000a     </span><br><span class="line"># 设置检测的频率，设置为10（以小时为单位（1-22））</span><br><span class="line">DetectionFrequencyEnabled=dword:00000001   </span><br><span class="line"># 设置为1，才能设置Frequency频率</span><br><span class="line">IncludeRecommendedUpdates=dword:00000001   </span><br><span class="line"># 指定自动更新是否将同时从Windows Update更新服务传递重要更新和建议更新。</span><br><span class="line"># 1：启用（启用此策略后，“自动更新”将安装建议的更新以及Windows Update更新服务中的重要更新）  </span><br><span class="line"># 2：禁用（禁用或未配置时，如果已将自动更新配置为自动更新，则它将继续提供重要更新。）</span><br><span class="line">NoAUAsDefaultShutdownOption=dword:00000001   </span><br><span class="line"># 不要在“关闭Windows”对话框中将默认选项调整为“安装更新并关闭” </span><br><span class="line"># 1：启用（如果你启用此策略设置，无论“你想要计算机做什么?”中的“安装更新和关闭”选项是否可用，“关闭Windows”对话框中的默认选项都是用户的最后一次关闭选项(休眠、重新启动等)。）；</span><br><span class="line"># 2：禁用（如果您禁用或没有配置此策略设置，当用户在开始菜单中选择关闭选项时，如果有更新可供安装，则“安装更新并关闭”选项将是关闭Windows对话框中的默认选项。）</span><br><span class="line">NoAUShutdownOption=dword:00000001   </span><br><span class="line"># 在“关闭Windows”对话框中不显示“安装更新和关闭”选项 </span><br><span class="line">#v1：启用（如果启用此策略设置，则即使在用户在“开始”菜单中选择“关闭”选项时，即使有更新可供安装，“关闭Windows对话框”中也不会出现“安装更新和关闭”选项。）； </span><br><span class="line">#v2：禁用（如果禁用或未配置此策略设置，并且当用户在“开始”菜单中选择“关闭”选项时，如果更新可用，则“关闭Windows”对话框中的“安装更新和关闭”选项将可用。）</span><br><span class="line">NoAutoRebootWithLoggedOnUsers=dword:00000001   </span><br><span class="line"># 设置为1，表明用户可以选择是否等一会重启，设置为0，5分钟之后重启</span><br><span class="line">NoAutoUpdate=dword:00000000     </span><br><span class="line"># 0：自动更新  1：禁用自动更新</span><br><span class="line">RebootRelaunchTimeout=dword:0000000a   </span><br><span class="line"># 提示重启间隔时间，10分钟（以分钟为单位（1-1440））</span><br><span class="line">RebootRelaunchTimeoutEnabled=dword:00000001    </span><br><span class="line"># 1：设置为1，才能设置Timeout时间</span><br><span class="line">RescheduleWaitTime=dword:0000000a    </span><br><span class="line"># 如果一个更新错过了安装时间后，下次开机提示的事件。如果3点没开机，没安装更新，开机十分钟后提示安装。（以分钟为单位（1-60））</span><br><span class="line">RescheduleWaitTimeEnabled=dword:00000001    </span><br><span class="line"># 设置为1，才能设置WaitTime</span><br><span class="line">ScheduledInstallDay=dword:00000000    </span><br><span class="line"># 0：每天都检测升级（0：每天， 1-7：星期几）</span><br><span class="line">ScheduledInstallTime=dword:00000003   </span><br><span class="line"># 设置自动安装的时间，十六进制a表示十进制10，上午三点到上午三点，自动安装补丁（以小时为单位（0-23））</span><br><span class="line">UseWUServer=dword:00000001  </span><br><span class="line"># 使用自己搭建的WSUSserver，不去微软公司的网站升级</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="2-3-5-使用安全套接字层协议保护WSUS"><a href="#2-3-5-使用安全套接字层协议保护WSUS" class="headerlink" title="2.3.5. 使用安全套接字层协议保护WSUS"></a>2.3.5. 使用安全套接字层协议保护WSUS</h5>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/29/DOS%E5%91%BD%E4%BB%A4%E7%A7%AF%E7%B4%AF/" rel="prev" title="DOS命令积累">
+                  <i class="fa fa-chevron-left"></i> DOS命令积累
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/02/%E9%85%8D%E7%BD%AE%E6%97%B6%E9%97%B4%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="next" title="配置时间源服务器">
+                  配置时间源服务器 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+</html>

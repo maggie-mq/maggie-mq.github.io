@@ -20,13 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.5.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="DOS命令积累 命令行语法参考： 没有括号的文本：必须键入的项目 &lt;尖括号包裹起来的文本&gt;：必须为其提供值的占位符 [中括号包裹起来的文本]：可选项目 &amp;#123;大括号包裹起来的文本&amp;#125;：一组必须的项目，必须选择一个 竖线（|）：互斥项目的分隔符，必须选择一个 省略号（……）：可以重复使用多次  一、secedit1. secedit功能secedit功能和【控制面板—管理工">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DOS命令积累">
 <meta property="og:url" content="http://example.com/2021/06/29/DOS%E5%91%BD%E4%BB%A4%E7%A7%AF%E7%B4%AF/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="DOS命令积累 命令行语法参考： 没有括号的文本：必须键入的项目 &lt;尖括号包裹起来的文本&gt;：必须为其提供值的占位符 [中括号包裹起来的文本]：可选项目 &amp;#123;大括号包裹起来的文本&amp;#125;：一组必须的项目，必须选择一个 竖线（|）：互斥项目的分隔符，必须选择一个 省略号（……）：可以重复使用多次  一、secedit1. secedit功能secedit功能和【控制面板—管理工">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-06-29T11:54:41.000Z">
-<meta property="article:modified_time" content="2021-06-29T11:54:41.694Z">
+<meta property="article:modified_time" content="2021-07-02T05:59:28.639Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -92,7 +94,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -105,6 +107,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DOS%E5%91%BD%E4%BB%A4%E7%A7%AF%E7%B4%AF"><span class="nav-number">1.</span> <span class="nav-text">DOS命令积累</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81secedit"><span class="nav-number">1.1.</span> <span class="nav-text">一、secedit</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-secedit%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. secedit功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%AF%AD%E6%B3%95%EF%BC%88%E9%80%9A%E8%BF%87-secedit-%E6%9F%A5%E7%9C%8B%EF%BC%89"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 语法（通过 secedit &#x2F;? 查看）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%881%EF%BC%89-secedit-configure%EF%BC%9A"><span class="nav-number">1.1.2.0.1.</span> <span class="nav-text">（1） secedit configure：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%882%EF%BC%89secedit-analyze%EF%BC%9A"><span class="nav-number">1.1.2.0.2.</span> <span class="nav-text">（2）secedit analyze：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%883%EF%BC%89secedit-import%EF%BC%9A"><span class="nav-number">1.1.2.0.3.</span> <span class="nav-text">（3）secedit import：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%884%EF%BC%89secedit-export%EF%BC%9A"><span class="nav-number">1.1.2.0.4.</span> <span class="nav-text">（4）secedit export：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%885%EF%BC%89secedit-validate%EF%BC%9A%E5%85%81%E8%AE%B8%E6%82%A8%E9%AA%8C%E8%AF%81%E5%AE%89%E5%85%A8%E6%A8%A1%E6%9D%BF%E7%9A%84%E8%AF%AD%E6%B3%95%E3%80%82"><span class="nav-number">1.1.2.0.5.</span> <span class="nav-text">（5）secedit validate：允许您验证安全模板的语法。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%886%EF%BC%89secedit-generaterollback%EF%BC%9A%E5%85%81%E8%AE%B8%E6%82%A8%E9%92%88%E5%AF%B9%E9%85%8D%E7%BD%AE%E6%A8%A1%E6%9D%BF%E7%94%9F%E6%88%90%E5%9B%9E%E6%BB%9A%E6%A8%A1%E6%9D%BF%E3%80%82"><span class="nav-number">1.1.2.0.6.</span> <span class="nav-text">（6）secedit generaterollback：允许您针对配置模板生成回滚模板。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81w32tm"><span class="nav-number">1.2.</span> <span class="nav-text">二、w32tm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BF%AE%E6%94%B9%E6%B3%A8%E5%86%8C%E8%A1%A8"><span class="nav-number">1.3.</span> <span class="nav-text">三、修改注册表</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -118,7 +121,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -184,6 +187,13 @@
 
       <time title="Created: 2021-06-29 19:54:41" itemprop="dateCreated datePublished" datetime="2021-06-29T19:54:41+08:00">2021-06-29</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-07-02 13:59:28" itemprop="dateModified" datetime="2021-07-02T13:59:28+08:00">2021-07-02</time>
+      </span>
 
   
 </div>
@@ -195,7 +205,168 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h1 id="DOS命令积累"><a href="#DOS命令积累" class="headerlink" title="DOS命令积累"></a>DOS命令积累</h1><blockquote>
+<p>命令行语法参考：</p>
+<p>没有括号的文本：必须键入的项目</p>
+<p><code>&lt;尖括号包裹起来的文本&gt;</code>：必须为其提供值的占位符</p>
+<p><code>[中括号包裹起来的文本]</code>：可选项目</p>
+<p><code>&#123;大括号包裹起来的文本&#125;</code>：一组必须的项目，必须选择一个</p>
+<p>竖线（<code>|</code>）：互斥项目的分隔符，必须选择一个</p>
+<p>省略号（<code>……</code>）：可以重复使用多次</p>
+</blockquote>
+<h2 id="一、secedit"><a href="#一、secedit" class="headerlink" title="一、secedit"></a>一、secedit</h2><h3 id="1-secedit功能"><a href="#1-secedit功能" class="headerlink" title="1. secedit功能"></a>1. secedit功能</h3><p><code>secedit</code>功能和【控制面板—管理工具—本地安全策略】类似，只是本地安全策略使用图形化界面进行安全设置，secedit可以在命令行中配置安全设置，可以写在bat脚本中，为批处理文件提供方便。</p>
+<h3 id="2-语法（通过-secedit-查看）"><a href="#2-语法（通过-secedit-查看）" class="headerlink" title="2. 语法（通过 secedit /? 查看）"></a>2. 语法（通过 secedit /? 查看）</h3><p><code>secedit [/configure | /analyze | /import | /export | /validate | /generaterollback]</code></p>
+<h5 id="（1）-secedit-configure："><a href="#（1）-secedit-configure：" class="headerlink" title="（1） secedit configure："></a>（1） <code>secedit configure</code>：</h5><p>允许你用保存在数据库中的安全性设置来配置系统。</p>
+<p><strong>官方解释：</strong></p>
+<blockquote>
+<p>此命令的语法为:</p>
+<p>secedit /configure /db filename [/cfg filename] /overwrite [/log filename] [/quiet]</p>
+<pre><code>/db filename - 指定用来执行安全性配置的数据库。
+
+/cfg filename - 指定在配置次计算机前要导入到数据库的安全性模板。安全性模板是用安全性模板管理单元创建的。
+
+/overwrite - 指定在导入安全性模板前数据库应该被清空。如果没有指定此参数，在安全性模板中指定的将累积到数据库中。如果没有指定此参数而且在数据库中的设置与要导入的模板冲突，将采用模板中的设置。
+
+/areas - 指定要应用到系统的安全性范围。如果没有指定此参数，在数据库中定义的所有安全性设置都将应用到系统中。要配置多个范围，用空格将它们分开。下列安全性范围将被导出:
+    SECURITYPOLICY - 包括帐户策略，审核策略，事件日志设置和安全选项。
+     GROUP_MGMT - 包括受限制的组设置
+     USER_RIGHTS - 包括用户权限分配
+     REGKEYS - 包括注册表权限
+                    FILESTORE - 包括文件系统权限
+                    SERVICES - 包括系统服务设置
+
+/log filename - 指定要记录配置操作状态的文件。如果没有指定，配置操作信息将被记录到 scesrv.log 文件中，此文件为于 %windir%\security\logs 目录。
+
+/quiet - 指定配置操作的执行不需要提示用户进行任何确认。
+</code></pre>
+<p>示例:</p>
+<p>secedit /configure /db hisecws.sdb /cfg hisecws.inf /overwrite /log hisecws.log</p>
+<p>对于所有的文件名，如果没有指定路径，则是用当前目录。</p>
+</blockquote>
+<h5 id="（2）secedit-analyze："><a href="#（2）secedit-analyze：" class="headerlink" title="（2）secedit analyze："></a>（2）<code>secedit analyze</code>：</h5><p>允许你基于存储在数据库中的基线设置来分析当前系统设置。此分析结果将保存在数据库中的一个独立的位置，并且可以用安全配置和分析管理单元来查看。</p>
+<blockquote>
+<p>此命令的语法为:</p>
+<p>secedit /analyze /db filename [/cfg filename ] [/overwrite] [/log filename] [/quiet]</p>
+<pre><code>/db filename - 指定用来执行分析的数据库。
+
+   /cfg filename - 指定在进行分析前要导入到数据库的安全模板。安全模板是用安全模板管理单元创建的。
+    
+   /log filename - 指定要记录配置处理状态的文件。如果没有指定，配置处理信息将被记录在 scesrv.log 文件中，可以在 s%windir%\security\logs 目录中找到它。
+    
+   /quiet - 指定分析处理的执行不需要提示用户进行任何确认。
+</code></pre>
+<p>   示例:</p>
+<p>secedit /analyze /db hisecws.sdb</p>
+<p>对于所有文件名，如果没有指定路径，则使用当前目录。</p>
+</blockquote>
+<h5 id="（3）secedit-import："><a href="#（3）secedit-import：" class="headerlink" title="（3）secedit import："></a>（3）<code>secedit import</code>：</h5><p>允许你<font color="blue">导入</font>安全模板到数据库，这样在模板中指定的设置就可以应用到系统或对系统进行分析。</p>
+<blockquote>
+<p>此命令的语法为:</p>
+<p>secedit /import  /db filename /cfg filename /overwrite [/log filename] [/quiet]</p>
+<pre><code>/db filename - 指定将要导入安全模板设置的数据库。
+
+/cfg filename - 指定要导入到数据库的安全模板。安全模板是用安全模板管理单元创建的。
+
+/overwrite - 指定在导入安全模板之前数据库应该被清空。如果没有指定此参数，在安全模板中的设置将被附加到数据库中。如果没有指定此参数并且在要导入的模板和数据库之间有设置冲突，将采用模板中的设置。
+
+/areas - 指定要导出的安全范围。如果没有指定此参数，将导出在数据库中定义的所有安全设置。要导出特定范围，用空格分隔它们。下列安全范围将被导出:
+
+                    SECURITYPOLICY - 包括帐户策略，审核策略，事件日志设置和安全选项。
+                    GROUP_MGMT - 包括受限制的组设置
+                    USER_RIGHTS - 包括用户权限分配
+                    REGKEYS - 包括注册表权限
+                    FILESTORE - 包括文件系统权限
+                    SERVICES - 包括系统服务设置
+
+/log filename - 指定要记录倒入操作状态的文件。如果没有指定，配置操作信息将被记录到 scesrv.log file 中，此文件为于 %windir%\security\logs 目录。
+
+/quiet - 指定导入操作的执行不需要提示用户进行任何确认。
+</code></pre>
+<p>示例:</p>
+<p>secedit /import /db hisecws.sdb /cfg hisecws.inf /overwrite</p>
+<p>对于所有的文件名，如果没有指定路径，则是用当前目录。</p>
+</blockquote>
+<h5 id="（4）secedit-export："><a href="#（4）secedit-export：" class="headerlink" title="（4）secedit export："></a>（4）<code>secedit export</code>：</h5><p>允许您<font color="blue">导出</font>存储在数据库中的安全设置。</p>
+<blockquote>
+<p>此命令的语法为:</p>
+<p>secedit /export [/db filename] [/mergedpolicy] /cfg filename [/areas area1 area2…] [/log filename]</p>
+<pre><code>/db filename - 指定要导出数据的数据库。如果没有指定，将使用系统安全数据库。
+
+/cfg filename - 指定要导出数据库内容的安全模板。
+
+/mergedpolicy - 合并并且导出域和本地策略安全模板。
+
+/areas - 指定要应用到系统的安全性范围。如果没有指定此参数，在数据库中定义的所有安全性设置都将应用到系统中。要配置多个范围，用空格将它们分开。下列安全性范围是受支持的:
+
+                    SECURITYPOLICY - 包括帐户策略，审核策略，事件日志设置和安全选项。
+                    GROUP_MGMT - 包括受限制的组设置
+                    USER_RIGHTS - 包括用户权限分配
+                    REGKEYS - 包括注册表权限
+                    FILESTORE - 包括文件系统权限
+                    SERVICES - 包括系统服务设置
+
+/log filename - 指定要记录导出操作状态的文件。如果没有指定，配置操作信息将被记录到 scesrv.log file 中，此文件为于 %windir%\security\logs 目录。
+</code></pre>
+<p>示例:</p>
+<p>secedit /export /db hisecws.sdb /cfg hisecws.inf /log hisecws.log</p>
+<p>对于所有的文件名，如果没有指定路径，则是用当前目录。</p>
+</blockquote>
+<h5 id="（5）secedit-validate：允许您验证安全模板的语法。"><a href="#（5）secedit-validate：允许您验证安全模板的语法。" class="headerlink" title="（5）secedit validate：允许您验证安全模板的语法。"></a>（5）<code>secedit validate</code>：允许您验证安全模板的语法。</h5><blockquote>
+<p>此命令的语法为:</p>
+<p>secedit /validate filename</p>
+<pre><code>/cfg filename - 指定要验证的安全模板。安全模板是用安全模板管理单元创建的。
+</code></pre>
+<p>示例:</p>
+<p>secedit /validate hisecws.inf</p>
+<p>对于所有的文件名，如果没有指定路径，则是用当前目录。</p>
+</blockquote>
+<h5 id="（6）secedit-generaterollback：允许您针对配置模板生成回滚模板。"><a href="#（6）secedit-generaterollback：允许您针对配置模板生成回滚模板。" class="headerlink" title="（6）secedit generaterollback：允许您针对配置模板生成回滚模板。"></a>（6）<code>secedit generaterollback</code>：允许您针对配置模板生成回滚模板。</h5><blockquote>
+<p>允许你生成一个关于配置模板的复原模板。</p>
+<p>此命令的语法为:</p>
+<p>secedit /generaterollback /cfg filename /rbk filename [/log filename] [/quiet]</p>
+<pre><code>/db filename - 指定执行复原操作使用的数据库。
+
+/cfg filename - 指定一个将要生成关于它的复原模板的安全模板。安全模板是用安全模板管理单元创建的。
+
+/rbk filename - 指定一个复原信息要写入的安全模板。安全模板是用安全模板管理单元创建的。
+
+/log filename - 指定记录复原操作状态的文件。如果没有指定，复原处理信息将被记录在 scesrv.log 文件中，可以在 s%windir%\security\logs 目录中找到它。
+
+/quiet - 指定复原处理的执行不需要提示用户进行任何确认。
+</code></pre>
+<p>示例:</p>
+<p>secedit /generaterollback /db hisecws.sdb /cfg hisecws.inf /rbk hisecwsrollback.inf /log hisecws.log</p>
+<p>对于所有的文件名，如果没有指定路径，则是用当前目录。</p>
+</blockquote>
+<h2 id="二、w32tm"><a href="#二、w32tm" class="headerlink" title="二、w32tm"></a>二、w32tm</h2><ul>
+<li>常用命令</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 查看时间源服务器</span><br><span class="line">w32tm /config /source  </span><br><span class="line"># 查看时间同步状态</span><br><span class="line">w32tm /config /status</span><br><span class="line"># 配置时间源服务器</span><br><span class="line">w32tm /config /manualpeerlist:[时间源服务器] /syncfromflags:manual /reliable:yes /update</span><br><span class="line"># 更新时间源配置信息</span><br><span class="line">w32tm /config /update</span><br><span class="line"># 重启服务器</span><br><span class="line">net stop w32time &amp;&amp; net start w32time</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>官方解释</li>
+</ul>
+<blockquote>
+<p>w32tm [/? | /register | /unregister ]<br>      ? - 此帮助屏幕。<br>      register - 注册为作为服务运行并且添加默认配置到注册表。<br>      unregister - 解除服务注册并删除所有配置来自注册表的信息。</p>
+<p>w32tm /monitor [/domain:<domain name>] [/computers:[,[,…]]] [/threads:] [/ipprotocol:&lt;4|6&gt;] [/nowarn]<br>      domain - 指定要监视的域。如果没有指定域名，或者没有指定域或者计算机选项，将使用默认域。此选项可以多次使用。<br>      computers - 监视给定的计算机列表。计算机名称由逗号分隔，没有空格。如果名称有前缀 ‘*’，它将被视为一个 AD PDC。此选项可以多次使用。<br>      threads - 同时分析的计算机数量。默认值为 3。允许的范围是 1-50。<br>      ipprotocol - 指定要使用的 IP 协议。默认为使用任何可用的。<br>      nowarn - 跳过警告消息。</domain></p>
+<p>w32tm /ntte <NT time epoch><br>      从 1601 年 1 月 1 日零时起，以(10^-7)秒为间隔，将 NT 系统时间转换为可读的格式。</NT></p>
+<p>w32tm /ntpte <NTP time epoch><br>      从 1900 年 1 月 1 日零时起，以(2^-32)秒为间隔，将 NTP 时间转换为可读的格式。</NTP></p>
+<p>w32tm /resync [/computer:<computer>] [/nowait] [/rediscover] [/soft]<br>      指示计算机应尽快重新同步它的时钟，以丢弃所有累计的错误统计信息。computer:<computer> - 应重新同步的计算机。 如果未指定，本地计算机将重新同步。<br>      nowait - 不等待进行重新同步；立即返回。否则，在返回之前等待重新同步完成。<br>      rediscover - 重新检测网络配置并重新发现网络来源，然后重新同步。<br>      soft - 使用现有的错误统计信息重新同步。不是很有用，这只是为了保持兼容而提供的。</computer></computer></p>
+<p>w32tm /stripchart /computer:<target> [/period:<refresh>] [/dataonly] [/samples:<count>] [/packetinfo] [/ipprotocol:&lt;4|6&gt;] [/rdtsc]<br>      显示此计算机和另一个计算机之间偏移量的带状图。<br>      computer:<target> - 测量偏移量时作为参照的计算机。<br>      period:<refresh> - 样本之间的时间(以秒为单位)。 默认值为 2 秒<br>      dataonly - 仅显示数据，而不显示图形。<br>      samples:<count> - 收集 <count> 个样本，然后停止。 如果未指定，将一直收集样本，直到按下 Ctrl-C。<br>      packetinfo - 输出 NTP 数据包响应消息。<br>      ipprotocol - 指定要使用的 IP 协议。默认设置为使用任何可用的协议。<br>      rdtsc - 使用 CSV 格式显示 TSC 值和时区偏移数据。<br>            输出显示发送 NTP 请求前捕获的 TSC 和 FILETIME 值，<br>            收到 NTP 响应后捕获的 TSC 值，<br>            以及 NTP 往返延迟和时间偏移值。</count></count></refresh></target></count></refresh></target></p>
+<p>w32tm /config [/computer:<target>] [/update] [/manualpeerlist:<peers>] [/syncfromflags:<source>]<br>  [/LocalClockDispersion:<seconds>] [/reliable:(YES|NO)] [/largephaseoffset:]<br>      computer:<target> - 调整 <target> 配置。如果未指定，默认设置为本地计算机。<br>      update - 通知时间服务配置已更改，以使更改生效。<br>      manualpeerlist:<peers> - 将手动对等机列表设置为 <peers>，这是以空格分隔的 DNS 和/或 IP 地址列表。如果指定多个对等机，必须用引号将此开关引起来。<br>     syncfromflags:<source> - 设置应该与 NTP 客户端同步的来源。<source> 应该是以逗号分隔的这些关键字的列表 (不区分大小写):<br>      MANUAL - 从手动对等机列表中的对等机同步<br>      DOMHIER - 从域层次结构中的一个 AD DC 同步<br>      NO - 不从任何对等机同步<br>      ALL - 从手动和域对等机同步<br>      LocalClockDispersion:<seconds> - 配置内部时钟的精确性。 如果 w32time 无法从其配置的来源获取时间，则它使用内部时钟。<br>      reliable:(YES|NO) - 设置此计算机是否为可靠的时间来源。此设置仅对域控制器有意义。<br>              YES - 此计算机提供可靠的时间服务<br>              NO - 此计算机不提供可靠的时间服务<br>      largephaseoffset:<milliseconds> - 设置本地和网络时间之间的差值，<br>        w32time 将其视为一个峰值。</milliseconds></seconds></peers></peers></target></target></seconds></peers></target></p>
+<p>w32tm /tz<br>     显示当前时区设置。</p>
+<p>w32tm /dumpreg [/subkey:<key>] [/computer:<target>]<br>      显示与给定注册表项关联的值。<br>      默认注册表项为 HKLM\System\CurrentControlSet\Services\W32Time (时间服务的根注册表项)。<br>      subkey:<key> - 显示与默认项的子项 <key>关联的值。<br>      computer:<target> - 查询计算机 <target> 的注册表设置。</target></target></key></key></target></key></p>
+<p>w32tm /query [/computer:<target>] {/source | /configuration | /peers | /status} [/verbose]<br>      显示计算机的 Windows 时间服务信息。<br>      computer:<target> - 查询 <target> 的信息。 如果未指定，则默认设置为本地计算机。<br>      source: 显示时间来源。<br>      configuration: 显示运行时间配置和设置的来源。在详细模式下，还会显示未定义或未使用的设置。<br>      peers: 显示对等机的列表及其状态。<br>      status: 显示 Windows 时间服务状态。<br>      verbose: 设置详细模式以显示详细信息。</target></target></target></p>
+<p>w32tm /debug {/disable | {/enable /file:<name> /size:<bytes> /entries:<value> [/truncate]}}<br>      启用或禁用本地计算机的 Windows 时间服务专用日志。<br>      disable: 禁用专用日志。<br>      enable: 启用专用日志。<br>        file:<name> - 指定绝对文件名。<br>        size:<bytes> - 指定循环日志记录的最大值。<br>        entries:<value> - 包含指定应记录的信息类型的标记列表，<br>          这些标记是使用数字指定的(以逗号分隔)。<br>          有效数字为 0 到 300。除了单个数字以外，<br>          数字范围也是有效的，例如，0-100、103 或 106。<br>          值 0-300 表示记录所有信息。<br>  truncate: 截断文件(如果存在)。</value></bytes></name></value></bytes></name></p>
+<p>w32tm /leapseconds /getstatus [/verbose]<br>     显示本地计算机上的闰秒状态。</p>
+</blockquote>
+<h2 id="三、修改注册表"><a href="#三、修改注册表" class="headerlink" title="三、修改注册表"></a>三、修改注册表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">REG Operation [Parameter List] Operation </span><br><span class="line">		[QUERY|ADD|DELETE|COPY|SAVE|LOAD|UNLOAD|RESTORE|COMPARE|EXPORT|IMPORT| FLAGS ]</span><br><span class="line">		</span><br><span class="line">返回代码: (除了 REG COMPARE)</span><br><span class="line">  0 - 成功</span><br><span class="line">  1 - 失败</span><br></pre></td></tr></table></figure>
+
+<p>语法：</p>
+<p>  REG QUERY /?<br>  REG ADD /?<br>  REG DELETE /?<br>  REG COPY /?<br>  REG SAVE /?<br>  REG RESTORE /?<br>  REG LOAD /?<br>  REG UNLOAD /?<br>  REG COMPARE /?<br>  REG EXPORT /?<br>  REG IMPORT /?<br>  REG FLAGS /?</p>
+<hr>
+<p><em>不断更新中</em></p>
+
     </div>
 
     
@@ -213,6 +384,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2021/06/30/%E6%90%AD%E5%BB%BA%E4%B8%80%E5%8F%B0wsus%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="next" title="搭建一台wsus服务器">
+                  搭建一台wsus服务器 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
